@@ -1,5 +1,59 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
+# MOTE AI - Docker & Laravel Environment
+
+This project is configured with a fully containerized Docker environment (powered by Laravel Sail) including PHP 8.4, MySQL 8.4, Redis, Mailpit, and phpMyAdmin.
+
+## 🚀 Quick Start with Docker
+
+### 1. Start all containers
+```bash
+./vendor/bin/sail up -d
+# or via composer shortcut:
+composer sail:up
+# or via standard docker compose:
+docker compose up -d
+```
+
+### 2. Run Database Migrations
+```bash
+./vendor/bin/sail artisan migrate
+# or:
+composer sail:migrate
+```
+
+### 3. Stop containers
+```bash
+./vendor/bin/sail down
+# or:
+composer sail:down
+```
+
+---
+
+## 🌐 Services & Port Mappings
+
+| Service | Local URL / Port | Description |
+| :--- | :--- | :--- |
+| **Laravel App** | [http://localhost:8000](http://localhost:8000) | Main web application |
+| **Vite HMR** | [http://localhost:5173](http://localhost:5173) | Frontend asset hot-reload |
+| **MySQL 8.4** | `127.0.0.1:3307` (or `mysql:3306` in Docker) | Database (`mote_ai`, user `sail`, pwd `password`) |
+| **phpMyAdmin** | [http://localhost:8080](http://localhost:8080) | Visual Database Web GUI |
+| **Mailpit** | [http://localhost:8025](http://localhost:8025) | Email testing inbox (SMTP: port `1025`) |
+| **Redis** | `127.0.0.1:6379` | Cache, queues & session storage |
+
+---
+
+## 🛠️ Common Sail Commands
+
+- **Run Artisan commands**: `./vendor/bin/sail artisan <command>`
+- **Run Composer commands**: `./vendor/bin/sail composer <command>`
+- **Run NPM / Vite**: `./vendor/bin/sail npm run dev`
+- **Interactive Shell**: `./vendor/bin/sail shell` or `composer sail:tinker`
+- **View Container Logs**: `./vendor/bin/sail logs -f`
+
+---
+
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
